@@ -1,0 +1,18 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4321:4321"
+    volumes:
+      # Le code du dossier est partagé avec le conteneur
+      - .:/app
+      # node_modules reste dans le conteneur (évite les conflits Windows/Linux)
+      - node_modules:/app/node_modules
+    environment:
+      # Détecte les modifications des fichiers sous Windows
+      - CHOKIDAR_USEPOLLING=true
+
+volumes:
+  node_modules:
