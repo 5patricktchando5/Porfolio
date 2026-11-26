@@ -1,0 +1,17 @@
+---
+// Racine du site : redirige vers la langue du navigateur (français par défaut).
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <title>Senior Dev iTech</title>
+    <meta http-equiv="refresh" content={`0; url=${base}/fr/`} />
+    <script is:inline define:vars={{ base }}>
+      var l = (navigator.language || 'fr').slice(0, 2) === 'en' ? 'en' : 'fr';
+      location.replace(base + '/' + l + '/');
+    </script>
+  </head>
+  <body><a href={`${base}/fr/`}>Français</a> · <a href={`${base}/en/`}>English</a></body>
+</html>
