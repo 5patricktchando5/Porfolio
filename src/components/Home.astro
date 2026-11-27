@@ -1,25 +1,23 @@
 ---
 import { ui, type Lang } from '../i18n/ui';
+import LanguageSwitcher from './LanguageSwitcher.astro';
 interface Props { lang: Lang }
 const { lang } = Astro.props;
 const t = ui[lang];
-const other: Lang = lang === 'fr' ? 'en' : 'fr';
-const base = import.meta.env.BASE_URL.replace(/\/$/, '');
 ---
 <main>
   <p class="label">{t.label}</p>
   <h1>{t.heading}</h1>
   <p class="sub">{t.sub}</p>
   <p class="soon">{t.soon}</p>
-  <a class="lang" href={`${base}/${other}/`} hreflang={other} lang={other}>{t.switchTo}</a>
+  <div class="switch"><LanguageSwitcher lang={lang} /></div>
 </main>
 
 <style>
-  main { max-width: 760px; margin: 0 auto; padding: 72px 20px; }
-  .label { margin: 0 0 20px; font-family: ui-monospace, 'SF Mono', Menlo, monospace; font-size: 12px; letter-spacing: .12em; color: #38e1ff; }
+  main { max-width: 760px; margin: 0 auto; padding: var(--space-8) var(--gutter); }
+  .label { margin: 0 0 var(--space-5); font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; color: var(--color-accent); }
   h1 { margin: 0; font-size: clamp(38px, 10vw, 80px); line-height: 1.03; letter-spacing: -.035em; }
-  .sub { margin: 22px 0 0; font-size: 18px; color: #b6c4d3; }
-  .soon { margin: 40px 0 0; color: #97a8ba; font-family: ui-monospace, Menlo, monospace; font-size: 13px; }
-  .lang { display: inline-flex; align-items: center; min-height: 44px; margin-top: 24px; padding: 0 20px; border: 1px solid #2a3b4e; border-radius: 12px; color: #e8f0f8; text-decoration: none; }
-  .lang:hover { border-color: #38e1ff; }
+  .sub { margin: var(--space-5) 0 0; font-size: 18px; color: var(--color-text-2); }
+  .soon { margin: var(--space-7) 0 0; color: var(--color-text-3); font-family: var(--font-mono); font-size: 13px; }
+  .switch { margin-top: var(--space-5); }
 </style>

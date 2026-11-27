@@ -1,0 +1,43 @@
+---
+import { languages, type Lang } from '../i18n/ui';
+
+interface Props { lang: Lang }
+const { lang } = Astro.props;
+
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+const codes = Object.keys(languages) as Lang[];
+---
+<div class="switcher" role="group" aria-label="Langue / Language">
+  {codes.map((code) =>
+    code === lang ? (
+      <span class="item active" aria-current="true" lang={code}>{code.toUpperCase()}</span>
+    ) : (
+      <a class="item" href={`${base}/${code}/`} hreflang={code} lang={code} aria-label={languages[code]}>
+        {code.toUpperCase()}
+      </a>
+    )
+  )}
+</div>
+
+<style>
+  .switcher {
+    display: inline-flex;
+    border: 1px solid var(--color-line-strong);
+    border-radius: var(--radius-sm);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 13px;
+  }
+  .item {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    min-height: var(--tap);
+    color: var(--color-text-2);
+    text-decoration: none;
+  }
+  a.item:hover { color: var(--color-accent); }
+  .active { background: var(--color-accent); color: var(--color-on-accent); }
+</style>
