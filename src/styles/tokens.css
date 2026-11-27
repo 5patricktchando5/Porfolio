@@ -1,0 +1,40 @@
+/* Identité visuelle – Direction A « Cyber Grid », angles arrondis */
+:root {
+  /* Couleurs */
+  --color-bg: #070b11;
+  --color-surface: #0e1621;
+  --color-line: #1b2a3a;
+  --color-line-strong: #2a3b4e;
+  --color-text: #e8f0f8;
+  --color-text-2: #b6c4d3;
+  --color-text-3: #97a8ba;
+  --color-accent: #38e1ff;
+  --color-accent-hover: #8fefff;
+  --color-on-accent: #04121a;
+
+  /* Rayons */
+  --radius-sm: 12px;
+  --radius-md: 14px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  /* Espacements */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-7: 48px;
+  --space-8: 64px;
+  --space-9: 96px;
+
+  /* Typographie */
+  --font-sans: 'Space Grotesk Variable', -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+  /* Mise en page */
+  --max-width: 1200px;
+  --gutter: 20px;
+  --tap: 44px;
+}
